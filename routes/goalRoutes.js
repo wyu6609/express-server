@@ -1,11 +1,16 @@
 import express from "express";
+import {
+  getGoals,
+  createGoals,
+  getSingleGoal,
+  updateGoal,
+  deleteGoal,
+} from "../controllers/goalController.js";
 
 const router = express.Router();
 
 //GET all GOALS ROUTE
-router.get("/", (request, response) => {
-  response.status(200).json({ message: "Get Goals" });
-});
+router.get("/", getGoals);
 
 // GET single GOAL
 router.get("/:id", (request, response) => {
