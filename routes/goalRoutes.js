@@ -1,39 +1,27 @@
 import express from "express";
 import {
   getGoals,
-  createGoals,
-  getSingleGoal,
+  setGoal,
   updateGoal,
   deleteGoal,
 } from "../controllers/goalController.js";
 
 const router = express.Router();
 
-//GET all GOALS ROUTE
-router.get("/", getGoals);
+// //GET all GOALS ROUTE
+// router.get("/", getGoals);
 
-// GET single GOAL
-router.get("/:id", (request, response) => {
-  response.status(200).json({ message: "Get single goal" });
-});
+// // CREATE GOAL
+// router.post("/", setGoal);
 
-// CREATE GOAL
-router.post("/", (request, response) => {
-  response.status(200).json({ message: "Create a goal" });
-});
+router.route("/").get(getGoals).post(setGoal);
 
-// UPDATE GOAL
+// // UPDATE GOAL
+// router.put("/:id", updateGoal);
 
-// request.params.id refers to :id
-router.put("/:id", (request, response) => {
-  response
-    .status(200)
-    .json({ message: `Update a goal (${request.params.id})` });
-});
-// DELETE GOAL
-router.delete("/:id", (request, response) => {
-  response
-    .status(200)
-    .json({ message: `Delete goal id: ${request.params.id}` });
-});
+// // DELETE GOAL
+// router.delete("/:id", deleteGoal);
+
+router.route("/:id").put(updateGoal).delete(deleteGoal);
+
 export default router;
