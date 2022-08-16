@@ -8,9 +8,7 @@ import asyncHandler from "express-async-handler";
 // @route GET /api/goals
 // @access Private
 export const getGoals = asyncHandler(async (request, response) => {
-  const goals = await Goal.find();
-
-  response.status(200).json(goals);
+  response.status(200).json({ message: "yo" });
 });
 
 // @desc Create a new Goal
