@@ -1,5 +1,5 @@
 // import schema from models
-import { Goal } from "../models/goalModel.js";
+import Goal from "../models/goalModel.js";
 // callback functions for routes
 
 import asyncHandler from "express-async-handler";
@@ -8,7 +8,9 @@ import asyncHandler from "express-async-handler";
 // @route GET /api/goals
 // @access Private
 export const getGoals = asyncHandler(async (request, response) => {
-  response.status(200).json({ message: "Get Goals" });
+  const goals = await Goal.find();
+
+  response.status(200).json(goals);
 });
 
 // @desc Create a new Goal

@@ -14,4 +14,6 @@ const goalSchema = mongoose.Schema(
 );
 
 // convert schema to model
-export const Goal = mongoose.model("Goal", goalSchema);
+const Goal = mongoose.model("Goal", goalSchema);
+
+export default Goal;
