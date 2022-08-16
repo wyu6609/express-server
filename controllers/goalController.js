@@ -1,5 +1,5 @@
 // import schema from models
-
+import { Goal } from "../models/goalModel.js";
 // callback functions for routes
 
 import asyncHandler from "express-async-handler";

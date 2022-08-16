@@ -7,6 +7,9 @@ import { errorHandler } from "./middleware/errorMiddleware.js";
 import { connectDB } from "./config/db.js";
 const PORT = process.env.PORT || 5000;
 
+//connect mongooseDB
+connectDB();
+
 const app = express();
 
 //middleware
