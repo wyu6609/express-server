@@ -53,7 +53,24 @@ export const registerUser = asyncHandler(async (request, response) => {
 // @route POST /api/users/login
 // @access public
 
-export const loginUser = asyncHandler(async (request, response) => {});
+export const loginUser = asyncHandler(async (request, response) => {
+  const { email, password } = req.body;
+
+  //check for user email
+  const user = await User.findOne({ email });
+
+  if (user && (await bcrypt.compare(password, user.password))) {
+    res.json({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      token: generateToken(user._id),
+    });
+  } else {
+    res.status(400);
+    throw new Error("Invalid credentials");
+  }
+});
 
 // @desc Get user data
 // @route GET /api/users/me
